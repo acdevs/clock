@@ -3,103 +3,111 @@
         <title>Clock</title>
         <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
         <link rel="icon" href="https://lh3.googleusercontent.com/proxy/J5Y_Xey_KujQyuAFrJgwIDGBOfXtU6VDWJzwluozJObP8xnkh1rHJ5yGyl1huEA_GH60yMQF_GdE-wgLN39tiiLO-zCP2e0" type="image">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             *{
                 box-sizing: border-box;
-            }
-            @font-face {
-                font-family: "Gotham-Bold";
-                src: url("Gotham-Bold.otf") format("opentype");
             }
             body{
                 margin:0;
             }
             #container{
                 position: fixed;
-                width: 200px;
-                height: 200px;
-                margin-left: -100px;
-                margin-top: -100px;
+                width: 300px;
+                height: 300px;
+                margin-left: -150px;
+                margin-top: -150px;
                 top:50%;
                 left:50%;
             }
             #clock{
                 position: absolute;
-                width: 200px;
-                height: 200px;
+                width: 300px;
+                height: 300px;
                 border-radius: 50%;
                 background-color: #121212;
-                border:10px solid #212121;
-            }
-            .digits{
-                display: none;
-                position: absolute;
-                font-family: 'Gotham-Bold';
-                font-size: 60px;
-                z-index: 5;
-                opacity: 1;
-                color: #dfcbad;
-            }
-            #twelve{
-                top:-30;
-                left: 50%;
-                margin-left: -30px;
-            }
-            #nine{
-                left: -20;
-                top:50%;
-                margin-top: -30px;
-            }
-            #six{
-                bottom:-30;
-                left: 50%;
-                margin-left: -20px;
-            }
-            #three{
-                right: -20;
-                top:50%;
-                margin-top: -30px;
+                border:20px solid #212121;
             }
     
             #hour{
                 position: absolute;
-                width:10px;
-                height:80px;
+                width:15px;
+                height:100px;
                 background-color: #000;
-                margin-left: -3px;
-                margin-top: -75px;
+                margin-left: -7.5px;
+                margin-top: -95px;
                 top:50%;
                 left:50%;
-                transform-origin: 5px 75px;
+                transform-origin: 7.5px 95px;
                 background-color: #dadada;
             }
             #minute{
                 position: absolute;
-                width:5px;
-                height:80px;
+                width:8px;
+                height:110px;
                 background-color: #000;
-                margin-left: -2px;
-                margin-top: -75px;
+                margin-left: -4px;
+                margin-top: -105px;
                 top:50%;
                 left:50%;
-                transform-origin: 2.5px 75px;
+                transform-origin: 4px 105px;
                 background-color: #7f7f7f;
             }
             #second{
                 position: absolute;
                 width:3px;
-                height:90px;
+                height:120px;
                 background-color: #000;
                 margin-left: -1px;
-                margin-top: -85px;
+                margin-top: -115px;
                 top:50%;
                 left:50%;
-                transform-origin: 1.5px 85px;
+                transform-origin: 1.5px 115px;
                 background-color: indianred;
             }
             .hands{
                 border-radius: 20px;
                 z-index: 5;
+            }
+            
+            @media only screen  and (max-width: 600px){
+               
+                #container{
+                    width: 90vw;
+                    height: 90vw;
+                    margin-left: -45vw;
+                    margin-top: -45vw;
+                }
+                #clock{
+                    width: 90vw;
+                    height: 90vw;
+                    border:5vw solid #212121;
+                }
+
+                #hour{
+                    width:5vw;
+                    height:32vw;
+                    margin-left: -2.5vw;
+                    margin-top: -30vw;
+                    transform-origin: 2.5vw 30vw;
+                }
+                #minute{
+                    width:3vw;
+                    height:35vw;
+                    margin-left: -1.5vw;
+                    margin-top: -33vw;
+                    transform-origin: 1.5vw 33vw;
+                }
+                #second{
+                    width:1vw;
+                    height:40vw;
+                    margin-left: -0.5vw;
+                    margin-top: -38vw;
+                    transform-origin: 0.5vw 38vw;
+                }
+                .hands{
+                    border-radius: 20vw;
+                }    
             }
         </style>
         <script>
@@ -137,10 +145,6 @@
     </head>
     <body>
         <div id='container'>
-            <div id='twelve' class='digits'>12</div>
-            <div id='nine' class='digits'>9</div>
-            <div id='six' class='digits'>6</div>
-            <div id='three' class='digits'>3</div>
             <div id='clock'>
                 <div id='second' class='hands'></div>
                 <div id='minute' class='hands'></div>
