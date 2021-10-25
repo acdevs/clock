@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>Clock</title>
+        <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+        <link rel="icon" href="https://lh3.googleusercontent.com/proxy/J5Y_Xey_KujQyuAFrJgwIDGBOfXtU6VDWJzwluozJObP8xnkh1rHJ5yGyl1huEA_GH60yMQF_GdE-wgLN39tiiLO-zCP2e0" type="image">
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            @font-face {
+                font-family: "Gotham-Bold";
+                src: url("Gotham-Bold.otf") format("opentype");
+            }
+            body{
+                margin:0;
+            }
+            #container{
+                position: fixed;
+                width: 200px;
+                height: 200px;
+                margin-left: -100px;
+                margin-top: -100px;
+                top:50%;
+                left:50%;
+            }
+            #clock{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background-color: #121212;
+                border:10px solid #212121;
+            }
+            .digits{
+                display: none;
+                position: absolute;
+                font-family: 'Gotham-Bold';
+                font-size: 60px;
+                z-index: 5;
+                opacity: 1;
+                color: #dfcbad;
+            }
+            #twelve{
+                top:-30;
+                left: 50%;
+                margin-left: -30px;
+            }
+            #nine{
+                left: -20;
+                top:50%;
+                margin-top: -30px;
+            }
+            #six{
+                bottom:-30;
+                left: 50%;
+                margin-left: -20px;
+            }
+            #three{
+                right: -20;
+                top:50%;
+                margin-top: -30px;
+            }
+    
+            #hour{
+                position: absolute;
+                width:10px;
+                height:80px;
+                background-color: #000;
+                margin-left: -3px;
+                margin-top: -75px;
+                top:50%;
+                left:50%;
+                transform-origin: 5px 75px;
+                background-color: #dadada;
+            }
+            #minute{
+                position: absolute;
+                width:5px;
+                height:80px;
+                background-color: #000;
+                margin-left: -2px;
+                margin-top: -75px;
+                top:50%;
+                left:50%;
+                transform-origin: 2.5px 75px;
+                background-color: #7f7f7f;
+            }
+            #second{
+                position: absolute;
+                width:3px;
+                height:90px;
+                background-color: #000;
+                margin-left: -1px;
+                margin-top: -85px;
+                top:50%;
+                left:50%;
+                transform-origin: 1.5px 85px;
+                background-color: indianred;
+            }
+            .hands{
+                border-radius: 20px;
+                z-index: 5;
+            }
+        </style>
+        <script>
+            
+            setInterval(function(){
+                var time = new Date();
+                
+                var st = time.getSeconds();
+                var s = document.getElementById('second');
+                if ( st == 60 ){
+                    st = 0;
+                }
+                rotateSecond = st*6;
+                s.style.transform = 'rotateZ('+rotateSecond+'deg)';
+                
+                var mt = time.getMinutes();
+                var m = document.getElementById('minute');
+                if ( mt == 60 ){
+                    mt = 0;
+                }
+                rotateMinute = mt*6 + st*0.1;
+                m.style.transform = 'rotateZ('+rotateMinute+'deg)';
+            
+                var ht = time.getHours();
+                var h = document.getElementById('hour');
+                if( ht >= 12 ){
+                    ht -= 12;
+                }
+                rotateHour = ht*30 + mt*0.5;
+                h.style.transform = 'rotateZ('+rotateHour+'deg)';
+            }, 1000);
+            
+            
+        </script>
+    </head>
+    <body>
+        <div id='container'>
+            <div id='twelve' class='digits'>12</div>
+            <div id='nine' class='digits'>9</div>
+            <div id='six' class='digits'>6</div>
+            <div id='three' class='digits'>3</div>
+            <div id='clock'>
+                <div id='second' class='hands'></div>
+                <div id='minute' class='hands'></div>
+                <div id='hour' class='hands'></div>
+            </div>
+        </div>
+    </body>
+</html>
